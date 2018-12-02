@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/style.css' %}" />
+    <script src="{% static 'app/js/chrome-fix.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <title>Minitattoo - минималистичные тату</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+    <div class="main" id="main">
+        <div class="background_block"></div>
+        <div class="header">
+            <div class="header-content-wrap">
+                <div class="left-part part">
+                    <div class="phone">
+                        <img src="{% static 'app/img/phone.svg' %}">
+                        <p>+7 929 007 91 06</p>
+                    </div>
+                </div>
+                <div class="mid-part part">
+                    <p>MINI TATTOO</p>
+                </div>
+                <div class="right-part part">
+                    <div class="social insta">
+                        <img src="{% static 'app/img/instagram.svg'%}">
+                    </div>
+                    <div class="social vk">
+                        <img src="{% static 'app/img/vk.svg'%}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-wrap">
+            <div class="content">
+                <div class="grid-wrap">
+                    {% for pic in pics %}
+                    <div class="grid-elem">
+                        <img src="{{ pic.image.url }}">
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="padding-bottom"></div>
+            </div>
+        </div>
+    </div>
+<script>
+</script>
+</body>
+</html>
