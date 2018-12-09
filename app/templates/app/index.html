@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <title>Minitattoo - минималистичные тату</title>
+    <title>mini tattoo - минималистичные тату</title>
     <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
@@ -18,12 +18,12 @@
             <div class="header-content-wrap">
                 <div class="left-part part">
                     <div class="phone">
-                        <img src="{% static 'app/img/phone.svg' %}">
+                        <!--<img src="{% static 'app/img/phone.svg' %}">-->
                         <p>+7 929 007 91 06</p>
                     </div>
                 </div>
                 <div class="mid-part part">
-                    <p>MINI TATTOO</p>
+                    <p>mini tattoo</p>
                 </div>
                 <div class="right-part part">
                     <div class="social insta">
@@ -40,7 +40,10 @@
                 <div class="grid-wrap">
                     {% for pic in pics %}
                     <div class="grid-elem">
-                        <img src="{{ pic.image.url }}">
+                        <img src="{{ pic.image.url }}" v-on:mouseover="mouseOver({{pic.id}})" v-on:mouseleave="mouseLeave({{pic.id}})">
+                        <div class="price" id="{{pic.id}}">
+                            <p>{{ pic.price }} руб.</p>
+                        </div>
                     </div>
                     {% endfor %}
                 </div>
@@ -49,6 +52,22 @@
         </div>
     </div>
 <script>
+    new Vue({
+      delimiters: ['${', '}'],
+      el: '#main',
+      data: {
+      },
+      methods: {
+          mouseOver(id) {
+              var elem = document.getElementById(id);
+              elem.style.opacity = "1";
+          },
+          mouseLeave(id) {
+              var elem = document.getElementById(id);
+              elem.style.opacity = "0";
+          }
+      }
+    });
 </script>
 </body>
 </html>
