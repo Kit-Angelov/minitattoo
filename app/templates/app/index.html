@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{% static 'app/css/style.css' %}" />
-    <script src="{% static 'app/js/chrome-fix.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -40,7 +39,7 @@
                 <div class="grid-wrap">
                     {% for pic in pics %}
                     <div class="grid-elem">
-                        <img src="{{ pic.image.url }}" v-on:mouseover="mouseOver({{pic.id}})" v-on:mouseleave="mouseLeave({{pic.id}})">
+                        <img src="{{ pic.image.url }}" v-on:mouseover="mouseOver({{pic.id}})" v-on:mouseleave="mouseLeave({{pic.id}})" v-on:click="chooseImg('{{pic.image.url}}')">
                         <div class="price" id="{{pic.id}}">
                             <p>{{ pic.price }} руб.</p>
                         </div>
@@ -48,6 +47,11 @@
                     {% endfor %}
                 </div>
                 <div class="padding-bottom"></div>
+                <div class="detail-view" v-if="choosenImg !== ''" v-on:click="choosenImg = ''">
+                        <div class="detail-img-wrap">
+                        <img v-bind:src="choosenImg" id="choosenImg">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -56,6 +60,7 @@
       delimiters: ['${', '}'],
       el: '#main',
       data: {
+          choosenImg: ''
       },
       methods: {
           mouseOver(id) {
@@ -65,6 +70,9 @@
           mouseLeave(id) {
               var elem = document.getElementById(id);
               elem.style.opacity = "0";
+          },
+          chooseImg(url) {
+              this.choosenImg = url;
           }
       }
     });

@@ -85,6 +85,7 @@
     margin:auto;
     padding-top: 70px;
     padding-bottom: 100px;
+    position: relative;
 }
 .padding-bottom {
     width: 100%;
@@ -208,6 +209,28 @@
     border-radius: 2px;
 }
 
+.detail-view {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left:0;
+    top:0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 98;
+    text-align: center;
+}
+.detail-img-wrap {
+    max-width: 100%;
+    margin-top: 80px;
+    height: calc(100% - 120px);
+    position: relative;
+}
+.detail-view img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+}
+
 @media only screen
   and (min-device-width: 320px)
   and (max-device-width: 767px)
@@ -243,4 +266,8 @@
     .content-wrap::-webkit-scrollbar-track {
         margin-bottom:56px;
     }
+    .detail-view {
+        display: none;
+    }
 }
+
