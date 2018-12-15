@@ -10,7 +10,7 @@ class HeroAdmin(admin.ModelAdmin):
 
     def image_view (self, obj):
         return mark_safe('<img src="{url}" width="{width}" height={height} />'.format(
-            url = obj.image.url,
+            url=obj.image.url,
             width=obj.image.width,
             height=obj.image.height,
             )
